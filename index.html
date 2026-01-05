@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Engineering | Portal</title>
+    
+    <!-- Google Fonts: Inter for English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1', // Indigo
+                        secondary: '#ec4899', // Pink
+                        dark: '#0f172a',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Animated Background Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative">
+
+    <!-- Background Effects -->
+    <div class="orb w-96 h-96 bg-purple-600 top-0 left-0 animate-pulse-slow"></div>
+    <div class="orb w-80 h-80 bg-blue-600 bottom-0 right-0 animate-pulse-slow" style="animation-delay: 1s;"></div>
+    <div class="orb w-64 h-64 bg-pink-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" style="animation-delay: 2s;"></div>
+
+    <!-- Navigation (Simple) -->
+    <nav class="w-full py-6 px-4 md:px-12 flex justify-between items-center z-10 glass-card rounded-b-2xl border-t-0 mx-auto max-w-7xl">
+        <div class="flex items-center gap-4">
+            <!-- Custom Logo Mark: A stylized 'C' + Hexagon -->
+            <div class="relative w-12 h-12 flex items-center justify-center bg-gradient-to-br from-indigo-600 to-pink-500 rounded-xl shadow-lg shadow-indigo-500/30 border border-white/10 group cursor-pointer hover:scale-105 transition-transform">
+                <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+            </div>
+            
+            <div class="flex flex-col">
+                <span class="text-xl font-bold leading-none tracking-tight text-white">Content</span>
+                <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium tracking-widest text-indigo-300 uppercase">Engineering</span>
+                    <span class="text-[10px] font-bold text-white bg-white/10 border border-white/20 px-2 py-0.5 rounded-full backdrop-blur-sm">TEAM</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Logo removed -->
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-16 relative z-10">
+        
+        <!-- Hero Section -->
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                One Place for All <br>
+                <span class="text-gradient">Your Digital Tools</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl leading-relaxed">
+                A curated collection of tools designed to boost productivity and streamline your daily workflows.
+            </p>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Tool Card 1 (Nagwa) -->
+            <div class="glass-card rounded-2xl p-6 group cursor-pointer relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-500/20 rounded-bl-full -mr-4 -mt-4 transition-all group-hover:bg-indigo-500/40"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-pen-nib text-2xl text-white"></i>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-indigo-400 transition-colors">Handwriting Editor</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed h-16 overflow-hidden">
+                        Streamline your content creation. A powerful tool for editing and managing digital handwriting assets.
+                    </p>
+                    
+                    <a href="https://content-tools.nagwa.com/" target="_blank" class="inline-flex items-center justify-between w-full px-4 py-3 bg-white/5 hover:bg-indigo-600 border border-white/10 rounded-xl transition-all duration-300 group-hover:shadow-lg">
+                        <span class="font-semibold text-sm">Open Tool</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool Card 2 (Placeholder for your next tool) -->
+            <div class="glass-card rounded-2xl p-6 group cursor-pointer relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-pink-500/20 rounded-bl-full -mr-4 -mt-4 transition-all group-hover:bg-pink-500/40"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-pink-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-pink-500/30 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-lines text-2xl text-white"></i>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-pink-400 transition-colors">Transcripts Review</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed h-16 overflow-hidden">
+                        Efficiently review, edit, and manage audio and video transcripts for accuracy and quality assurance.
+                    </p>
+                    
+                    <a href="#" class="inline-flex items-center justify-between w-full px-4 py-3 bg-white/5 hover:bg-pink-600 border border-white/10 rounded-xl transition-all duration-300 group-hover:shadow-lg">
+                        <span class="font-semibold text-sm">Coming Soon</span>
+                        <i class="fa-solid fa-clock group-hover:rotate-12 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool Card 3 (Bulk Question Uploader) -->
+            <div class="glass-card rounded-2xl p-6 group cursor-pointer relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-500/20 rounded-bl-full -mr-4 -mt-4 transition-all group-hover:bg-cyan-500/40"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-cyan-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-cyan-500/30 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cloud-arrow-up text-2xl text-white"></i>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">Bulk Question Uploader</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed h-16 overflow-hidden">
+                        Transform vast question banks into exam-ready formats. Streamline your workflow with mass editing, smart validation, and instant bulk exports.
+                    </p>
+                    
+                    <a href="#" class="inline-flex items-center justify-between w-full px-4 py-3 bg-white/5 hover:bg-cyan-600 border border-white/10 rounded-xl transition-all duration-300 group-hover:shadow-lg">
+                        <span class="font-semibold text-sm">Coming Soon</span>
+                        <i class="fa-solid fa-clock group-hover:rotate-12 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-8 text-center text-gray-500 text-sm relative z-10">
+        
+    </footer>
+
+    <script>
+        // Simple entry animation for cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 150 + 300); // Staggered delay
+            });
+        });
+    </script>
+</body>
+</html>
