@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Engineering | Portal</title>
+    
+    <!-- Dynamic Favicon (SVG) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['"Noto Sans Arabic"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1', 
+                        secondary: '#ec4899', 
+                        dark: '#0f172a',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* 1. Premium Noise Texture */
+        .bg-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.07;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+
+        /* Glassmorphism Card Style with 2. Improved Glow */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(99, 102, 241, 0.6); /* Sharper border color */
+            box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.25), 
+                        0 0 20px rgba(99, 102, 241, 0.1) inset; /* Inner glow */
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #818cf8, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -2; 
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative selection:bg-indigo-500 selection:text-white">
+
+    <!-- Noise Overlay -->
+    <div class="bg-noise"></div>
+
+    <!-- Background Orbs -->
+    <div class="orb w-96 h-96 bg-purple-600 top-0 left-0 animate-pulse-slow"></div>
+    <div class="orb w-80 h-80 bg-blue-600 bottom-0 right-0 animate-pulse-slow" style="animation-delay: 1s;"></div>
+    <div class="orb w-64 h-64 bg-pink-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" style="animation-delay: 2s;"></div>
+
+    <!-- Navigation -->
+    <nav class="w-full py-5 px-4 md:px-12 flex flex-col md:flex-row justify-between items-center z-10 glass-card rounded-b-2xl border-t-0 mx-auto max-w-7xl">
+        <div class="flex items-center gap-4 mb-4 md:mb-0">
+            <!-- Logo Mark -->
+            <div class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-indigo-600 to-pink-500 rounded-xl shadow-lg shadow-indigo-500/30 border border-white/10 group cursor-pointer hover:scale-105 transition-transform">
+                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <span class="text-lg font-bold tracking-tight text-white font-heading">Content</span>
+                <span class="text-lg font-bold tracking-tight text-indigo-400 font-heading">Engineering</span>
+            </div>
+        </div>
+        
+        <!-- Status Indicator removed -->
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-16 relative z-10">
+        
+        <!-- Hero Section -->
+        <div class="text-center mb-20 max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight font-heading">
+                One Place for All <br>
+                <span class="text-gradient">Your Digital Tools</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl leading-relaxed font-light">
+                A curated collection of tools designed to boost productivity and streamline your daily workflows.
+            </p>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+
+            <!-- Tool Card 1 (Active) -->
+            <div class="glass-card rounded-2xl p-6 group cursor-pointer relative overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_rgba(99,102,241,0.3)]">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-[100px] -mr-8 -mt-8 transition-all group-hover:bg-indigo-500/20 pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col flex-grow">
+                    <div class="w-14 h-14 bg-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                        <i class="fa-solid fa-pen-nib text-2xl text-white"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-3 text-white group-hover:text-indigo-400 transition-colors font-heading">Handwriting Editor</h3>
+                    <p class="text-gray-400 mb-8 text-sm leading-relaxed flex-grow">
+                        Streamline your content creation. A powerful tool for editing and managing digital handwriting assets.
+                    </p>
+                    
+                    <a href="https://content-tools.nagwa.com/" target="_blank" class="mt-auto inline-flex items-center justify-between w-full px-5 py-3 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white transition-all duration-300 shadow-lg shadow-indigo-900/20 group-hover:shadow-indigo-500/40">
+                        <span class="font-semibold text-sm">Launch Tool</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tool Card 2 (Disabled/Coming Soon) -->
+            <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col h-full border-white/5">
+                <div class="relative z-10 flex flex-col flex-grow opacity-75">
+                    <div class="w-14 h-14 bg-gray-800 rounded-xl flex items-center justify-center mb-6 border border-white/10">
+                        <i class="fa-solid fa-file-lines text-2xl text-gray-400"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-3 text-gray-300 font-heading">Transcripts Review</h3>
+                    <p class="text-gray-500 mb-8 text-sm leading-relaxed flex-grow">
+                        Efficiently review, edit, and manage audio and video transcripts for accuracy and quality assurance.
+                    </p>
+                    
+                    <!-- 4. Disabled Button State -->
+                    <div class="mt-auto inline-flex items-center justify-between w-full px-5 py-3 bg-white/5 border border-white/5 rounded-xl text-gray-500 cursor-not-allowed select-none">
+                        <span class="font-semibold text-sm">Coming Soon</span>
+                        <i class="fa-solid fa-lock text-xs opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool Card 3 (Disabled/Coming Soon) -->
+            <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col h-full border-white/5">
+                <div class="relative z-10 flex flex-col flex-grow opacity-75">
+                    <div class="w-14 h-14 bg-gray-800 rounded-xl flex items-center justify-center mb-6 border border-white/10">
+                        <i class="fa-solid fa-cloud-arrow-up text-2xl text-gray-400"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-3 text-gray-300 font-heading">Bulk Question Uploader</h3>
+                    <p class="text-gray-500 mb-8 text-sm leading-relaxed flex-grow">
+                        Transform vast question banks into exam-ready formats. Streamline your workflow with mass editing.
+                    </p>
+                    
+                    <!-- 4. Disabled Button State -->
+                    <div class="mt-auto inline-flex items-center justify-between w-full px-5 py-3 bg-white/5 border border-white/5 rounded-xl text-gray-500 cursor-not-allowed select-none">
+                        <span class="font-semibold text-sm">Coming Soon</span>
+                        <i class="fa-solid fa-lock text-xs opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 5. Populated Footer -->
+    <footer class="w-full border-t border-white/5 bg-black/20 backdrop-blur-md relative z-10 mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+                <div class="text-gray-500 text-sm">
+                    &copy; 2025 Content Engineering Team
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth entry animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100 + 200); 
+            });
+        });
+    </script>
+</body>
+</html>
