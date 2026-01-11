@@ -4,7 +4,7 @@ export const tools = [
     title: 'Handwriting Editor',
     description: 'Streamline your content creation. A powerful tool for editing and managing digital handwriting assets.',
     icon: 'fa-solid fa-pen-nib',
-    link: 'https://content-tools.nagwa.com/',
+    link: 'https://content-tools.nagwa.com/handwriting-editor',
     isActive: true,
     bgColor: 'bg-indigo-600',
     shadowColor: 'shadow-indigo-500/30',
